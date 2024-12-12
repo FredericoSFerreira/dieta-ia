@@ -9,8 +9,6 @@ import { logger } from './utils/logger.js';
 
 dotenv.config();
 
-console.log(process.env.PORT, "hjhkj")
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -28,6 +26,10 @@ app.use(limiter);
 
 // Routes
 app.use('/api/diet', dietRoutes);
+
+app.get('/api/healthcheck', (req, res) => {
+  res.send('OK')
+})
 
 // Error handling
 app.use(errorHandler);

@@ -14,7 +14,8 @@ export function ResultadoDieta({dados}: ResultadoDietaProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-0">
             <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <p className="text-white-600">
-                    <AlertTriangleIcon className="w-5 h-5 text-white-600"/> Esta é uma dieta gerada por inteligência artificial (IA). A quantidade de
+                    <AlertTriangleIcon className="w-5 h-5 text-white-600"/> Esta é uma dieta gerada por inteligência
+                    artificial (IA). A quantidade de
                     calorias e alimentos pode variar dependendo das
                     necessidades individuais. E fundamental consultar um nutricionista para um plano alimentar
                     personalizado.</p>
@@ -49,12 +50,13 @@ export function ResultadoDieta({dados}: ResultadoDietaProps) {
                                 }</p>
                             </div>
                         </div>
-                        <h3 className="text-lg font-semibold mt-2">Suplementos Recomendados</h3>
-                        {parsedDietPlan.suplementos.map((item) => {
+                        {parsedDietPlan ? <h3 className="text-lg font-semibold mt-2">Suplementos Recomendados</h3> : ""}
+
+                        {parsedDietPlan ? parsedDietPlan.suplementos.map((item) => {
                             return (
                                 <p className="mt-1">{item}</p>
                             );
-                        })}
+                        }) : " "}
                     </div>
 
                     <div className="space-y-4 sm:space-y-6">
