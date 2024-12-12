@@ -4,6 +4,7 @@ import { Download } from 'lucide-react';
 import { ResultadoDieta } from '../components/ResultadoDieta';
 import { DadosUsuario } from '../types';
 import { generatePDF } from '../utils/pdfGenerator';
+import { AlertTriangle } from 'lucide-react';
 
 export function MinhaDieta() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export function MinhaDieta() {
 
   if (!dados) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-12 pt-20">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">
           Nenhuma dieta encontrada
         </h2>
@@ -30,7 +31,7 @@ export function MinhaDieta() {
   }
 
   return (
-    <div>
+    <div className="pt-20">
       <div className="max-w-4xl mx-auto mb-6 flex justify-end">
         <button
           onClick={() => generatePDF(dados)}

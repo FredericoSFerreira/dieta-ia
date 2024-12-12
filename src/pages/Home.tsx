@@ -15,20 +15,19 @@ export function Home() {
     setError(null);
 
     try {
-      const dietPlan = await generateDietPlan(dados);
       localStorage.setItem('dadosUsuario', JSON.stringify(dados));
+      const dietPlan = await generateDietPlan(dados);
       localStorage.setItem('dietPlan', JSON.stringify(dietPlan));
       navigate('/minha-dieta');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro ao gerar dieta. Tente novamente.');
     } finally {
-      localStorage.setItem('dadosUsuario', JSON.stringify(dados));
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-20">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
           Crie sua dieta personalizada

@@ -9,7 +9,10 @@ export function generatePDF(dados: DadosUsuario) {
   // Título
   doc.setFontSize(20);
   doc.text('Dieta Personalizada', 105, 20, { align: 'center' });
-  
+
+  // doc.setFontSize(8);
+  // doc.text(`Observações: ${parsedDietPlan.observacao}`, 20, 30)
+
   // Informações do usuário
   doc.setFontSize(12);
   doc.text(`Nome: ${dados.nome}`, 20, 40);
@@ -22,27 +25,24 @@ export function generatePDF(dados: DadosUsuario) {
   let yPos = 110;
 
   if (parsedDietPlan) {
-    Object.entries(parsedDietPlan).forEach(([day, meals]: [string, any]) => {
+    parsedDietPlan.refeicoes.forEach((item) => {
       if (yPos > 250) {
         doc.addPage();
         yPos = 20;
       }
 
       doc.setFontSize(14);
-      doc.text(day, 20, yPos);
+      doc.text(item.dia.toUpperCase(), 20, yPos);
       yPos += 10;
 
       doc.setFontSize(12);
-      Object.entries(meals).forEach(([meal, details]: [string, any]) => {
-        doc.text(`${meal}:`, 30, yPos);
-        if (Array.isArray(details)) {
-          details.forEach((item) => {
+      item.refeicoes.forEach((refeicoes) => {
+        doc.text(`${refeicoes.nome}:`, 30, yPos);
+        if (Array.isArray(refeicoes.alimentos)) {
+          refeicoes.alimentos.forEach((item) => {
             yPos += 5;
             doc.text(`• ${item}`, 40, yPos);
           });
-        } else {
-          yPos += 5;
-          doc.text(`• ${details}`, 40, yPos);
         }
         yPos += 10;
       });
