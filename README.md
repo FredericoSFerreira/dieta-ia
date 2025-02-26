@@ -1,0 +1,1 @@
+# # Dieta IA [![Netlify Status](https://api.netlify.com/api/v1/badges/abd07200-4353-454a-9d88-6372a133b9e1/deploy-status)](https://app.netlify.com/sites/dieta-ia/deploys)
